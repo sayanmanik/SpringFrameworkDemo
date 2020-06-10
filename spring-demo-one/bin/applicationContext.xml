@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<context:property-placeholder location="classpath:sport.properties"/>
+	
+    <!-- Define your beans here -->
+    
+    <!-- define the dependency -->
+    
+    <bean id="myFortuneService"
+    		class="com.sayan.HappyFortuneService">
+    	</bean> 
+    
+ 	<bean id="myCoach"
+ 		class="com.sayan.TrackCoach">	
+ 		<constructor-arg ref="myFortuneService"></constructor-arg> 		
+ 	</bean>
+
+    <!--
+    <bean id="myCoach"
+        class="com.luv2code.springdemo.BaseballCoach">         
+    </bean>
+    -->
+
+    
+    <bean id="myCricketCoach"
+    		class = "com.sayan.CricketCoach">
+    <property name="fortuneService" ref="myFortuneService"></property>
+    <property name="emailAddress" value="${foo.email}"></property>
+    <property name="team" value="${foo.team}"></property>
+    </bean>
+ 
+    
+    <bean id="fortuneService"
+    	class = "com.sayan.HappyFortuneService"></bean>
+    	
+    <bean id="golfCoach" 
+    	class="com.sayan.GolfCoach">
+    	<constructor-arg ref="fortuneService"></constructor-arg>	
+    </bean>
+
+</beans>
