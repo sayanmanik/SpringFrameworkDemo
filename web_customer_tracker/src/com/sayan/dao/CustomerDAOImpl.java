@@ -28,13 +28,24 @@ public class CustomerDAOImpl implements CustomerDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		Query<Customer> theQuery = 
-				 currentSession.createQuery("from Customer", Customer.class); // always use POJO class name in the syntax
+				 currentSession.createQuery("from Customer order by lastName", Customer.class); // always use POJO class name in the syntax
 		
 		
 		List<Customer> customers = theQuery.getResultList();
 		
 		
 		return customers;
+	}
+
+
+
+	@Override
+	public void saveCustomer(Customer theCustomer) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		currentSession.save(theCustomer);
+		
 	}
 
 }
