@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sayan.dao.CustomerDAO;
 import com.sayan.entity.Customer;
+import com.sayan.service.CustomerService;
 
 @Controller
 @RequestMapping("/customer")
@@ -18,12 +19,12 @@ public class CustomerController {
 
 	
 	@Autowired
-	private CustomerDAO customerDAO;
+	private CustomerService customerService;
 	
 	@GetMapping("/list")
 	public String listCustomers(Model model){
 		
-		List<Customer> theCustomers = customerDAO.getCustomers();
+		List<Customer> theCustomers = customerService.getCustomers();
 		
 		model.addAttribute("customers", theCustomers);
 		
