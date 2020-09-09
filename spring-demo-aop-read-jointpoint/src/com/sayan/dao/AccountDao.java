@@ -1,5 +1,8 @@
 package com.sayan.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.sayan.aopdemo.Account;
@@ -11,6 +14,20 @@ public class AccountDao {
 	private String serviceCode;
 	
 
+	public List<Account> findAccounts(){
+		List<Account> myAccounts = new ArrayList();
+		
+		Account temp1 = new Account("Sayan","Gold");
+		Account temp2 = new Account("Manik","Silver");
+		Account temp3 = new Account("Prabhas","Platinum");
+		
+		myAccounts.add(temp1);
+		myAccounts.add(temp2);
+		myAccounts.add(temp3);
+		
+		return myAccounts;
+	}
+	
 	public void addAccount(Account theAccount,boolean value){
 		System.out.print("\n"+getClass()+":DOING MY DB WORK: ADDING AN ACCOUNT");
 	}
